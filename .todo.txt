@@ -1,0 +1,7 @@
+Vuex Store
+  Store locally
+  boxes
+UI/components
+  Strips
+  sidebar
+  menu
