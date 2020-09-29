@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import './registerServiceWorker'
+import Store from 'src/store/index.js'
 
-Vue.use(Vuex)
+Store
 Vue.config.productionTip = false
 
 new Vue({

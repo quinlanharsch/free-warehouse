@@ -1,18 +1,26 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul id="example-1">
+      <li v-for="(item, key) in this.$store.suById(0).itemList" :key="item">
+        <Item name="key" number="item"></Item>
+        {{ item }} - {{ key }}
+      </li>
+    </ul>
+    <Item msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Item from './components/item.vue'
 
 export default {
   name: 'App',
-  store,
   components: {
-    HelloWorld
+    Item
+  },
+  methods:{
+    ...mapActions(['suById'])
   }
 }
 </script>

@@ -11,14 +11,21 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   state:{  // default state
     itemList: {
-      1: {name:"Sample Supply", total: 30, capacity:1000}
+      1: {name:"Sample Supply 1", total: 30, capacity:1000},
+      2: {name:"Sample Supply 2", total: 30, capacity:1000},
+      3: {name:"Sample Supply 3", total: 30, capacity:1000},
+      8: {name:"Sample Supply 8", total: 30, capacity:1000}
     },
 		suList:{
       0: {name:"Available Items", itemList: {
         1: 10,
+        2: 1,
+        8: 1,
       }},
 			1: {name:"Sample Ambulance", itemList: {
         1: 20,
+        3: 1
+        8: 1
       }},
 		},
 	},
@@ -29,10 +36,10 @@ export default new Vuex.Store({
 		suById(state, suId) {
 			return state.suList[suId]
 		},
-    itemListById(state, suId, itemId){
+    itemById(state, suId, itemId){
       return state.suList[suId].itemList[itemId]
     },
-    itemListBySu(state, su, itemId){
+    itemBySu(state, su, itemId){
       return su.itemList[itemId]
     }
 	},
