@@ -1,15 +1,18 @@
 <template>
   <div class="item">
-    <p>Item is {{name}}, {{number}}</p>
+    <p>Item is {{this.$store.getters.itemNameById(name)}}, {{number}}</p>
   </div>
 </template>
 
 <script>
+import store from '../store/index.js'
+
 export default {
+  store,
   name: 'Item',
   props: {
     name: String,
-    number: String
+    number: Number
   }
 }
 </script>

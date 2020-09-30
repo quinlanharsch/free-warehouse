@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import cart from './modules/cart'
-import products from './modules/products'
-import createLogger from '../../../src/plugins/logger'
+//import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
+//const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state:{  // default state
@@ -20,28 +18,28 @@ export default new Vuex.Store({
       0: {name:"Available Items", itemList: {
         1: 10,
         2: 1,
-        8: 1,
+        8: 1
       }},
 			1: {name:"Sample Ambulance", itemList: {
         1: 20,
-        3: 1
+        3: 1,
         8: 1
       }},
 		},
 	},
 	getters:{
-    suList(state) {
+    suList: (state) => {
       return state.suList
     },
-		suById(state, suId) {
+		suById: (state) => (suId) => {
 			return state.suList[suId]
 		},
-    itemById(state, suId, itemId){
+    itemById: (state) => (suId, itemId) => {
       return state.suList[suId].itemList[itemId]
     },
-    itemBySu(state, su, itemId){
-      return su.itemList[itemId]
-    }
+    itemNameById: (state) => (itemId) => {
+      return state.itemList[itemId].name
+    },
 	},
 	mutations:{
     // Remove item qty from the suList completely (from some su_)
@@ -92,6 +90,6 @@ export default new Vuex.Store({
       }
     },
 	},
-  strict: debug,
-  plugins: debug ? [createLogger()] : []
+  //strict: debug,
+  //plugins: debug ? [createLogger()] : []
 })
