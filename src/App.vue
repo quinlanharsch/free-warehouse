@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <button @click="this.toggleStorageMode">Toggle storageMode</button>
     <ol>
-      <li v-for="(item, itemId) in this.itemList" :key="itemId">
+      <li v-for="(item, itemId) in this.itemTypes" :key="itemId">
         {{itemId}} | {{item}}
       </li>
     </ol>
@@ -14,7 +15,7 @@
 <script>
 import store from './store/index.js'
 import StorageUnit from './components/storage-unit.vue'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState, mapMutations} from 'vuex'
 
 export default {
   store,
@@ -23,7 +24,11 @@ export default {
     StorageUnit
   },
   computed: {
-    ...mapGetters(['suList', 'itemList'])
+    ...mapGetters(['suList', 'itemTypes']),
+    ...mapState(['storageMode'])
+  },
+  methods: {
+    ...mapMutations(['toggleStorageMode'])
   }
 }
 </script>
@@ -35,6 +40,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width: 480px;
+  margin: auto;
 }
 </style>

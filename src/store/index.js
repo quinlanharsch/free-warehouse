@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{  // default state
-    itemList: {
+    storageMode: true,
+    itemTypes: {
       '1': {name:"Sample Supply 1", total: 30, capacity:1000},
       '2': {name:"Sample Supply 2", total: 30, capacity:1000},
       '3': {name:"Sample Supply 3", total: 30, capacity:1000},
@@ -18,10 +19,12 @@ export default new Vuex.Store({
       '0': {name:"Available Items", itemList: {
         '1': 10,
         '2': 1,
+        '3': 0,
         '8': 1
       }},
 			'1': {name:"Sample Ambulance", itemList: {
         '1': 20,
+        '2': 0,
         '3': 1,
         '8': 1
       }},
@@ -31,8 +34,8 @@ export default new Vuex.Store({
     suList: (state) => {
       return state.suList
     },
-    itemList: (state) => {
-      return state.itemList
+    itemTypes: (state) => {
+      return state.itemTypes
     },
 		suById: (state) => (suId) => {
 			return state.suList[suId]
@@ -41,10 +44,16 @@ export default new Vuex.Store({
       return state.suList[suId].itemList[itemId]
     },
     itemNameById: (state) => (itemId) => {
-      return state.itemList[itemId].name
+      return state.itemTypes[itemId].name
     },
 	},
 	mutations:{
+    // createItemType(state, payload) {
+    //   //todo this
+    // },
+    toggleStorageMode(state) {
+      state.storageMode = !state.storageMode
+    },
     // Remove item qty from the suList completely (from some su_)
 		consumeItem(state, payload) {
       const suId = payload['suId']
@@ -55,7 +64,7 @@ export default new Vuex.Store({
       const itemLs = state.suList[suId].itemList
 			if(itemLs[itemId] - qty >= 0) {
         itemLs[itemId] -= qty
-        state.itemList[itemId].total -= qty
+        state.itemTypes[itemId].total -= qty
       }
 		},
     // Add item qty to the suList (to some su_)
@@ -66,11 +75,11 @@ export default new Vuex.Store({
 
       console.log(suId, itemId, qty)
       const itemLs = state.suList[suId].itemList
-      const cap = state.itemList[itemId].capacity
+      const cap = state.itemTypes[itemId].capacity
       console.log(itemLs, cap)
 			if(itemLs[itemId] + qty <= cap) {
         itemLs[itemId] += qty
-        state.itemList[itemId].total += qty
+        state.itemTypes[itemId].total += qty
       }
 		},
     // Move itemList from su_ to su0
