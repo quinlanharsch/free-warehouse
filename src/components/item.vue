@@ -1,36 +1,60 @@
 <template>
-  <div class="item">
-    <p>Item is {{this.$store.getters.itemNameById(name)}}, {{number}}</p>
+  <div class='item'>
+    <p>{{itemNameById(itemId)}} | {{qty}}</p>
+    <a @click="onAquire()">[+]</a>
+    <a @click="onConsume()">[-]</a>
+    <a @click="onRetrieve()">[@]</a>
+    <a @click="onStore()">[#]</a>
   </div>
 </template>
 
 <script>
-import store from '../store/index.js'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
-  store,
   name: 'Item',
-  props: {
-    name: String,
-    number: Number
+  props: ['itemId', 'qty', 'suId'],
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  computed: {
+    ...mapGetters(['itemNameById'])
+  },
+  methods: {
+    ...mapMutations(['acquireItem']),
+    onAquire: function() {
+      this.$store.commit('acquireItem',
+        {'suId': this.suId, 'itemId': this.itemId, 'qty':1}
+      )
+    },
+    onConsume: function() {
+      this.$store.commit('consumeItem',
+        {'suId': this.suId, 'itemId': this.itemId, 'qty':1}
+      )
+    },
+    onRetrieve: function() {
+      this.$store.commit('retrieveItem',
+        {'suId': this.suId, 'itemId': this.itemId, 'qty':1}
+      )
+    },
+    onStore: function() {
+      this.$store.commit('storeItem',
+        {'suId': this.suId, 'itemId': this.itemId, 'qty':1}
+      )
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.itemWrapper{
+  padding: 10px
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.item{
+  background-color: white;
+  margin: 10px 0;
 }
 </style>

@@ -9,27 +9,30 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{  // default state
     itemList: {
-      1: {name:"Sample Supply 1", total: 30, capacity:1000},
-      2: {name:"Sample Supply 2", total: 30, capacity:1000},
-      3: {name:"Sample Supply 3", total: 30, capacity:1000},
-      8: {name:"Sample Supply 8", total: 30, capacity:1000}
+      '1': {name:"Sample Supply 1", total: 30, capacity:1000},
+      '2': {name:"Sample Supply 2", total: 30, capacity:1000},
+      '3': {name:"Sample Supply 3", total: 30, capacity:1000},
+      '8': {name:"Sample Supply 8", total: 30, capacity:1000}
     },
 		suList:{
-      0: {name:"Available Items", itemList: {
-        1: 10,
-        2: 1,
-        8: 1
+      '0': {name:"Available Items", itemList: {
+        '1': 10,
+        '2': 1,
+        '8': 1
       }},
-			1: {name:"Sample Ambulance", itemList: {
-        1: 20,
-        3: 1,
-        8: 1
+			'1': {name:"Sample Ambulance", itemList: {
+        '1': 20,
+        '3': 1,
+        '8': 1
       }},
 		},
 	},
 	getters:{
     suList: (state) => {
       return state.suList
+    },
+    itemList: (state) => {
+      return state.itemList
     },
 		suById: (state) => (suId) => {
 			return state.suList[suId]
@@ -43,32 +46,41 @@ export default new Vuex.Store({
 	},
 	mutations:{
     // Remove item qty from the suList completely (from some su_)
-		consumeItem(state, suId, itemId, qty) {
-      let item = state.suList[suId].itemList[itemId]
-			if(state.itemList[itemId].total < qty) {
-        item.qty = 0
-        state.itemList[itemId].total = 0
-        return
+		consumeItem(state, payload) {
+      const suId = payload['suId']
+      const itemId = payload['itemId']
+      const qty = payload['qty']
+
+      console.log(suId, itemId, qty)
+      const itemLs = state.suList[suId].itemList
+			if(itemLs[itemId] - qty >= 0) {
+        itemLs[itemId] -= qty
+        state.itemList[itemId].total -= qty
       }
-			item.qty -= qty
-      state.itemList[itemId].total -= qty
 		},
     // Add item qty to the suList (to some su_)
-    acquireItem(state, suId, itemId, qty) {
-      let item = state.suList[suId].itemList[itemId]
-      let cap = state.itemList[itemId].capacity
-			if(state.itemList[itemId].total + qty > cap) {
-        item.qty = cap
-        state.itemList[itemId].total = cap
-        return
+    acquireItem(state, payload) {
+      const suId = payload['suId']
+      const itemId = payload['itemId']
+      const qty = payload['qty']
+
+      console.log(suId, itemId, qty)
+      const itemLs = state.suList[suId].itemList
+      const cap = state.itemList[itemId].capacity
+      console.log(itemLs, cap)
+			if(itemLs[itemId] + qty <= cap) {
+        itemLs[itemId] += qty
+        state.itemList[itemId].total += qty
       }
-			item.qty += qty
-      state.itemList[itemId].total += qty
 		},
     // Move itemList from su_ to su0
-    storeItem(state, suId, itemId, qty){
-      let su0 = state.suList[0].itemList
-      let su1 = state.suList[suId].itemList
+    storeItem(state, payload) {
+      const suId = payload['suId']
+      const itemId = payload['itemId']
+      const qty = payload['qty']
+
+      const su0 = state.suList[0].itemList
+      const su1 = state.suList[suId].itemList
       if (su1[itemId] > qty) {  // If there is enough in su1
         su0[itemId] += qty
         su1[itemId] -= qty
@@ -78,9 +90,13 @@ export default new Vuex.Store({
       }
     },
     // Move itemList from su0 to su_
-    retrieveItem(state, suId, itemId, qty){
-      let su0 = state.suList[0].itemList
-      let su1 = state.suList[suId].itemList
+    retrieveItem(state, payload) {
+      const suId = payload['suId']
+      const itemId = payload['itemId']
+      const qty = payload['qty']
+
+      const su0 = state.suList[0].itemList
+      const su1 = state.suList[suId].itemList
       if (su0[itemId] > qty) {  // If there is enough in su0
         su0[itemId] -= qty
         su1[itemId] += qty

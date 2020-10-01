@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <ul id="example-1">
-      <li v-for="(qty, name) in this.$store.getters.suById(0).itemList" :key="name">
-        <Item :name="name" :number="qty"></Item>
+    <ol>
+      <li v-for="(item, itemId) in this.itemList" :key="itemId">
+        {{itemId}} | {{item}}
       </li>
-    </ul>
-    <Item msg="Welcome to Your Vue.js App"/>
+    </ol>
+    <div v-for="(su, suId) in this.suList" :key="suId">
+      <storage-unit :su="su" :su-id="suId"></storage-unit>
+    </div>
   </div>
 </template>
 
 <script>
-import Item from './components/item.vue'
 import store from './store/index.js'
+import StorageUnit from './components/storage-unit.vue'
+import {mapGetters} from 'vuex'
 
 export default {
   store,
   name: 'App',
   components: {
-    Item
+    StorageUnit
+  },
+  computed: {
+    ...mapGetters(['suList', 'itemList'])
   }
 }
 </script>
@@ -28,7 +33,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
 }
