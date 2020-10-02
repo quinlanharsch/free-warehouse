@@ -1,22 +1,22 @@
 <template>
   <div class='item'>
-    <div class="itemWrapper">
-      <div class='itemName innerItem'>
+    <div class="hzAlignWrapper">
+      <div class='left hzAlignInner'>
         {{this.itemNameById(itemId)}}
       </div>
-      <div class='counter innerItem'>
+      <div class='right hzAlignInner'>
         <div v-if="!this.storageMode">
-          <a class='btn' @click="onAquire()">+</a>
+          <a class='btn' @click="onAquire()">＋</a>
           {{qty}}
-          <a class='btn' v-if="!this.storageMode" @click="onConsume()">-</a>
+          <a class='btn' v-if="!this.storageMode" @click="onConsume()">－</a>
         </div>
         <div v-else-if="this.storageMode && (this.suId != '0')">
-          <a class='btn' @click="onRetrieve()">&#8650;</a>
+          <a class='btn' @click="onRetrieve()">⇊</a>
           {{qty}}
-          <a class='btn' @click="onStore()">&#8648;</a>
+          <a class='btn' @click="onStore()">⇈</a>
         </div>
         <div v-else>
-          <a class='btn'>_</a> {{qty}} <a class='btn'>_</a>
+          <a class='btn'>⋅</a> {{qty}} <a class='btn'>⋅</a>
         </div>
       </div>
     </div>
@@ -64,32 +64,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.item{
-  border: 1px solid red;
-}
-.itemWrapper{
-  padding: 0.8em;
-  margin: 2px 0;
-  position: relative;
-}
-.innerItem{
-  position: absolute;
-}
-.itemName{
-  left: 0.2em;
-  top: 0.2em;
-  display: inline-block;
-}
-.counter{
-  right: 0.2em;
-  top: 0.2em;
-  display: inline-block;
-}
-.btn{
-  border: 1px solid blue;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 2px;
-}
-</style>
+<!-- <style scoped>
+</style> -->

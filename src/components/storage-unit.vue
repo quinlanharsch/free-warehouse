@@ -1,7 +1,7 @@
 <template>
   <div class='StorageUnit'>
     <h3>{{su.name}}</h3>
-    <div class='itemWrapper'>
+    <div class='hzAlignWrapper'>
       <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="item">
         <item :itemId='itemId' :qty='qty' :suId='suId'></item>
       </div>
@@ -27,8 +27,8 @@ h3, p{
   padding: 0.2em 0 0.2em 0;
   text-align: left;
 }
-.itemWrapper{
-  padding: 10px
+.hzAlignWrapper{
+  padding: 10px 0;
 }
 .su{
   margin: 10px 0;
