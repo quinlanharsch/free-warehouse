@@ -47,6 +47,7 @@ export default {
   color: #2c3e50;
   max-width: 480px;
   margin: auto;
+  user-select: none;
 }
 h1, h2, h3, h4, h5, h6{
   margin: 0;

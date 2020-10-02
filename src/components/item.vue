@@ -5,18 +5,21 @@
         {{this.itemNameById(itemId)}}
       </div>
       <div class='right hzAlignInner'>
+        <!-- todo make this a component -->
         <div v-if="!this.storageMode">
           <a class='btn' @click="onAquire()">＋</a>
-          {{qty}}
+          <input v-model="quantity">
           <a class='btn' v-if="!this.storageMode" @click="onConsume()">－</a>
         </div>
         <div v-else-if="this.storageMode && (this.suId != '0')">
           <a class='btn' @click="onRetrieve()">⇊</a>
-          {{qty}}
+          <input v-model="quantity">
           <a class='btn' @click="onStore()">⇈</a>
         </div>
         <div v-else>
-          <a class='btn'>⋅</a> {{qty}} <a class='btn'>⋅</a>
+          <a class='btn'>⋅</a>
+          <input v-model="quantity">
+          <a class='btn'>⋅</a>
         </div>
       </div>
     </div>
@@ -36,7 +39,17 @@ export default {
   },
   computed: {
     ...mapGetters(['itemNameById']),
-    ...mapState(['storageMode'])
+    ...mapState(['storageMode']),
+    quantity: {
+      get() {
+        return this.$store.state.suList[this.suId].itemList[this.itemId];
+      },
+      set(value) {
+        this.$store.commit('updateQuantity',
+          {'suId': this.suId, 'itemId': this.itemId, 'qty':value}
+        );
+      },
+    },
   },
   methods: {
     onAquire: function() {

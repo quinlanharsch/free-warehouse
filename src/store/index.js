@@ -10,10 +10,10 @@ export default new Vuex.Store({
   state:{  // default state
     storageMode: true,
     itemTypes: {
-      '1': {name:"Sample Supply 1", total: 30, capacity:1000},
-      '2': {name:"Sample Supply 2", total: 30, capacity:1000},
-      '3': {name:"Sample Supply 3", total: 30, capacity:1000},
-      '8': {name:"Sample Supply 8", total: 30, capacity:1000}
+      '1': {name:"Sample Supply 1", total: 30, capacity:50},
+      '2': {name:"Sample Supply 2", total: 1, capacity:10},
+      '3': {name:"Sample Supply 3", total: 1, capacity:10},
+      '8': {name:"Sample Supply 8", total: 2, capacity:10}
     },
 		suList:{
       '0': {name:"Available Items", itemList: {
@@ -75,9 +75,9 @@ export default new Vuex.Store({
 
       console.log(suId, itemId, qty)
       const itemLs = state.suList[suId].itemList
-      const cap = state.itemTypes[itemId].capacity
-      console.log(itemLs, cap)
-			if(itemLs[itemId] + qty <= cap) {
+      const iType = state.itemTypes[itemId]
+      console.log(itemLs, iType.capacity)
+			if(iType.total + qty <= iType.capacity) {
         itemLs[itemId] += qty
         state.itemTypes[itemId].total += qty
       }
@@ -90,12 +90,9 @@ export default new Vuex.Store({
 
       const su0 = state.suList[0].itemList
       const su1 = state.suList[suId].itemList
-      if (su1[itemId] > qty) {  // If there is enough in su1
+      if (su1[itemId] >= qty) {  // If there is enough in su1
         su0[itemId] += qty
         su1[itemId] -= qty
-      } else {
-        su1[itemId] -= su0[itemId]
-        su0[itemId] = 0
       }
     },
     // Move itemList from su0 to su_
@@ -106,13 +103,21 @@ export default new Vuex.Store({
 
       const su0 = state.suList[0].itemList
       const su1 = state.suList[suId].itemList
-      if (su0[itemId] > qty) {  // If there is enough in su0
+      if (su0[itemId] >= qty) {  // If there is enough in su0
         su0[itemId] -= qty
         su1[itemId] += qty
-      } else {
-        su0[itemId] -= su1[itemId]
-        su1[itemId] = 0
       }
+    },
+    // updating with v-model
+    updateQuantity(state, payload){
+      const suId = payload['suId']
+      const itemId = payload['itemId']
+      const qty = payload['qty']
+
+      const itemLs = state.suList[suId].itemList
+      const diff = qty - itemLs[itemId]
+      itemLs[itemId] += diff
+      state.itemTypes[itemId].total += diff
     },
 	},
   //strict: debug,
