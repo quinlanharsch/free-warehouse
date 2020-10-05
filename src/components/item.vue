@@ -7,19 +7,19 @@
       <div class='right hzAlignInner'>
         <!-- todo make this a component -->
         <div v-if="!this.storageMode">
-          <a class='btn' @click="onAquire()">＋</a>
-          <input v-model="quantity">
-          <a class='btn' v-if="!this.storageMode" @click="onConsume()">－</a>
+          <button @click="onAquire()">＋</button>
+          <input type="text" v-model="quantity">
+          <button v-if="!this.storageMode" @click="onConsume()">－</button>
         </div>
         <div v-else-if="this.storageMode && (this.suId != '0')">
-          <a class='btn' @click="onRetrieve()">⇊</a>
-          <input v-model="quantity">
-          <a class='btn' @click="onStore()">⇈</a>
+          <button @click="onRetrieve()">⇊</button>
+          <input type="text" v-model="quantity">
+          <button @click="onStore()">⇈</button>
         </div>
         <div v-else>
-          <a class='btn'>⋅</a>
-          <input v-model="quantity">
-          <a class='btn'>⋅</a>
+          <button>⋅</button>
+          <input type="text" v-model="quantity">
+          <button>⋅</button>
         </div>
       </div>
     </div>
@@ -77,5 +77,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<!-- <style scoped>
-</style> -->
+/* <style scoped>
+
+</style> */

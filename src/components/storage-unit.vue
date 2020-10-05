@@ -24,7 +24,7 @@ export default {
 <style scoped>
 h3, p{
   margin: 0;
-  padding: 0.2em 0 0.2em 0;
+  padding: 0.4em 0;
   text-align: left;
 }
 .hzAlignWrapper{
@@ -32,5 +32,8 @@ h3, p{
 }
 .su{
   margin: 10px 0;
+}
+.item{
+  margin: 5px 0;
 }
 </style>

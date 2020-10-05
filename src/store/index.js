@@ -54,6 +54,7 @@ export default new Vuex.Store({
     toggleStorageMode(state) {
       state.storageMode = !state.storageMode
     },
+
     // Remove item qty from the suList completely (from some su_)
 		consumeItem(state, payload) {
       const suId = payload['suId']
@@ -82,6 +83,7 @@ export default new Vuex.Store({
         state.itemTypes[itemId].total += qty
       }
 		},
+
     // Move itemList from su_ to su0
     storeItem(state, payload) {
       const suId = payload['suId']
@@ -108,16 +110,33 @@ export default new Vuex.Store({
         su1[itemId] += qty
       }
     },
+
     // updating with v-model
     updateQuantity(state, payload){
       const suId = payload['suId']
       const itemId = payload['itemId']
-      const qty = payload['qty']
+      const qty = parseInt(payload['qty'], 10)
 
       const itemLs = state.suList[suId].itemList
       const diff = qty - itemLs[itemId]
-      itemLs[itemId] += diff
-      state.itemTypes[itemId].total += diff
+
+      if (!state.storageMode){
+        const iType = state.itemTypes[itemId]
+        // between 0 and cap // suid==0 for if in store mode and su0 is edited
+        if (qty >= 0 && iType.total + diff <= iType.capacity){
+          itemLs[itemId] = qty
+          state.itemTypes[itemId].total += diff
+        }
+
+      } else { // is storageMode
+        const su0 = state.suList[0].itemList
+        const su1 = state.suList[suId].itemList
+        // diff pos if retr
+        if (su0[itemId] >= diff && su1[itemId] >= (diff * -1)){
+          su0[itemId] -= diff
+          su1[itemId] += diff
+        }
+      }
     },
 	},
   //strict: debug,
