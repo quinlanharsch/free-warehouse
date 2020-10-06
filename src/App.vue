@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <div class="hzAlignWrapper">
-      <h2 class="hzAlignInner left">Free-Warehouse</h2>
+      <div class="hzAlignInner left">
+        <img src="/img/icons/icon.svg"
+        style="display: inline-block; height: 1.2em;"
+        alt="*^^">
+        <h2 style="display: inline-block;">Free-Warehouse</h2>
+      </div>
       <button class='hzAlignInner right' @click="this.toggleStorageMode">
         {{this.storageMode?"⇅":"±"}}
       </button>
@@ -100,8 +105,9 @@ button:hover{
 input[type=text]{
   padding: 3px;
   margin: 0 2px;
-  width: 5em;
+  width: 3em;
   border: 0;
+  text-align: center;
   font-family:inherit;
   font-size: inherit;
 }
