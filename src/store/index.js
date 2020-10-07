@@ -46,6 +46,25 @@ export default new Vuex.Store({
     itemNameById: (state) => (itemId) => {
       return state.itemTypes[itemId].name
     },
+    csvData: (state) => {
+      const suListKeys = Object.keys(state.suList)
+      const itemListKeys = Object.keys(state.itemTypes)
+      var csv = new Array(suListKeys.length + 1)
+      csv[0] = 'Name'
+      itemListKeys.forEach(function(itemId){
+         csv[0] += ',' + state.itemTypes[itemId].name
+      })
+      var i = 1
+      suListKeys.forEach(function(suId) {
+        csv[i] = state.suList[suId].name
+        itemListKeys.forEach(function(itemId){
+           csv[i] += ',' + state.suList[suId].itemList[itemId].toString()
+        })
+        i++
+      })
+      console.log(csv.join("\n"))
+      return encodeURIComponent(csv.join("\n"))
+    }
 	},
 	mutations:{
     // createItemType(state, payload) {

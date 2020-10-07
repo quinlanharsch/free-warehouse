@@ -7,9 +7,16 @@
         alt="*^^">
         <h2 style="display: inline-block;">Freehouse</h2>
       </div>
-      <button class='hzAlignInner right' @click="this.toggleStorageMode">
-        {{this.storageMode?"⇅":"±"}}
-      </button>
+      <div class='hzAlignInner right'>
+        <button @click="this.toggleStorageMode">
+          {{this.storageMode?"⇅":"±"}}
+        </button>
+        <a
+          :href= "'data:text/csv;charset=utf-8,' + this.csvData"
+          target = "_blank"
+          download = "store_data.csv"
+        >csv</a>
+      </div>
     </div>
     <br/>
     <h3>Item Types</h3>
@@ -36,7 +43,7 @@ export default {
     StorageUnit
   },
   computed: {
-    ...mapGetters(['suList', 'itemTypes']),
+    ...mapGetters(['suList', 'itemTypes', 'csvData']),
     ...mapState(['storageMode'])
   },
   methods: {
