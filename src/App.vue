@@ -5,7 +5,7 @@
         <img src="/img/icons/icon.svg"
         style="display: inline-block; height: 1.2em;"
         alt="*^^">
-        <h2 style="display: inline-block;">Free-Warehouse</h2>
+        <h2 style="display: inline-block;">Freehouse</h2>
       </div>
       <button class='hzAlignInner right' @click="this.toggleStorageMode">
         {{this.storageMode?"⇅":"±"}}
