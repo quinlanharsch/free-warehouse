@@ -1,24 +1,6 @@
 <template>
   <div id="app">
-    <div class="hzAlignWrapper">
-      <div class="hzAlignInner left">
-        <img src="/img/icons/icon.svg"
-        style="display: inline-block; height: 1.2em;"
-        alt="*^^">
-        <h2 style="display: inline-block;">Freehouse</h2>
-      </div>
-      <div class='hzAlignInner right'>
-        <button @click="this.toggleStorageMode">
-          {{this.storageMode?"⇅":"±"}}
-        </button>
-        <a
-          :href= "'data:text/csv;charset=utf-8,' + this.csvData"
-          target = "_blank"
-          download = "store_data.csv"
-        >csv</a>
-      </div>
-    </div>
-    <br/>
+    <navbar></navbar>
     <h3>Item Types</h3>
     <br/>
     <p class="itemTypes" v-for="(item, itemId) in this.itemTypes" :key="itemId">
@@ -34,12 +16,14 @@
 <script>
 import store from './store/index.js'
 import StorageUnit from './components/storage-unit.vue'
+import Navbar from './components/navbar.vue'
 import {mapGetters, mapState, mapMutations} from 'vuex'
 
 export default {
   store,
   name: 'App',
   components: {
+    Navbar,
     StorageUnit
   },
   computed: {
@@ -74,8 +58,9 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, div:hover{
   padding: 0.2em 0;
   margin: 2px 0;
 }
-button{
-  width: 20px;
+.btn{
+  margin: 2px;
+  min-width: 30px;
   padding: 3px;
   border: 1px solid #ff9c66;
   background-color: #ff9c66;
@@ -84,12 +69,11 @@ button{
   font-family:inherit;
   font-size: inherit;
 }
-button:hover{
+.btn:hover{
   background-color: #ff8847;
   border-color: #ff8847;
   cursor: pointer;
 }
-
 .hzAlignWrapper{
   padding: 0.8em 0;
   margin: 2px 0;

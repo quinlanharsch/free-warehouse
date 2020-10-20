@@ -12,7 +12,9 @@
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
-    "vuex": "^3.5.1"
+    "vue-router": "^3.4.7",
+    "vuex": "^3.5.1",
+    "workbox-sw": "^5.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
