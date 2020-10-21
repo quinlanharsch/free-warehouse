@@ -1,38 +1,24 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <h3>Item Types</h3>
-    <br/>
-    <p class="itemTypes" v-for="(item, itemId) in this.itemTypes" :key="itemId">
-      {{itemId}}. {{item.name}}, {{item.total}}/{{item.capacity}}
-    </p>
-    <br/>
-    <div v-for="(su, suId) in this.suList" :key="suId">
-      <storage-unit :su="su" :su-id="suId"></storage-unit>
-    </div>
+    <router-view class='content-wrapper'></router-view>
   </div>
 </template>
 
 <script>
 import store from './store/index.js'
-import StorageUnit from './components/storage-unit.vue'
 import Navbar from './components/navbar.vue'
-import {mapGetters, mapState, mapMutations} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
   store,
   name: 'App',
   components: {
-    Navbar,
-    StorageUnit
+    Navbar
   },
   computed: {
-    ...mapGetters(['suList', 'itemTypes', 'csvData']),
-    ...mapState(['storageMode'])
+    ...mapGetters(['suList', 'itemTypes']),
   },
-  methods: {
-    ...mapMutations(['toggleStorageMode'])
-  }
 }
 </script>
 
@@ -43,10 +29,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
-  max-width: 480px;
-  margin: auto;
+
   user-select: none;
   box-sizing: border-box;
+}
+.content-wrapper{
+  max-width: 480px;
+  margin: auto;
 }
 h1, h2, h3, h4, h5, h6{
   margin: 0;

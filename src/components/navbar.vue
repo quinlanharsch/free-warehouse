@@ -23,9 +23,16 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'Navbar',
   components: {
+  },
+  computed: {
+    ...mapState(['storageMode'])
+  },
+  methods: {
+    ...mapMutations(['toggleStorageMode'])
   }
 }
 </script>

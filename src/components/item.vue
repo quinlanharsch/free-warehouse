@@ -78,7 +78,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.item{
+.hzAlignWrapper{
   margin: 10px 0
 }
 </style>
