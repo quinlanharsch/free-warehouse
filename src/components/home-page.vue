@@ -4,12 +4,15 @@
     <br/>
     <p>
       Welcome to Freehouse, the lightweight inventory management system.
-      Navigate to the invenory views above.
+      Navigate to the two invenory views here.
       <br/><br/>
-      The <b>Item List (/i)</b> displays Items in terms of their capacities.
+      <a class="btn" href="/?#/i">/i</a>
+      The <b><a href="/?#/i">Item List</a></b>
+      displays item totals. Edit capacities here.
       <br/><br/>
-      The <b>Storage Unit List (/u)</b> displays storerooms, vehicles, etc.
-      and the quantities of items they are storing inside them.
+      <a class="btn" href="/?#/u">/u</a>
+      The <b><a href="/?#/i">Storage Unit List</a></b>
+      displays storerooms, vehicles, etc.
     </p>
   </div>
 </template>

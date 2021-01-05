@@ -1,9 +1,10 @@
 <template>
-  <div id="storageUnitPage">
+  <div id="storageUnitSinglePage">
     <storage-unit-page-selector></storage-unit-page-selector>
-    <div v-for="(su, suId) in this.suList" :key="suId">
-      <storage-unit :su="su" :su-id="suId"></storage-unit>
-    </div>
+    <storage-unit
+    :su="this.suById($route.params.suid)"
+    :su-id="$route.params.suid">
+    </storage-unit>
   </div>
 </template>
 
@@ -15,13 +16,13 @@ import {mapGetters} from 'vuex'
 
 export default {
   store,
-  name: 'StorageUnitPage',
+  name: 'StorageUnitSinglePage',
   components: {
-    StorageUnit,
-    StorageUnitPageSelector
+    StorageUnitPageSelector,
+    StorageUnit
   },
   computed: {
-    ...mapGetters(['suList'])
+    ...mapGetters(['suList', 'suById'])
   }
 }
 </script>

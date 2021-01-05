@@ -1,6 +1,6 @@
 <template>
   <div class='StorageUnit'>
-    <h3>{{su.name}}</h3>
+    <h3 @click="singlePage()">{{su.name}} <span class="su-id">/{{suId}}</span></h3>
     <div class='hzAlignWrapper'>
       <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="item">
         <item :itemId='itemId' :qty='qty' :suId='suId'></item>
@@ -16,7 +16,27 @@ export default {
   components: {
     Item
   },
-  props: ['su', 'suId']
+  props: ['su', 'suId'],
+  methods:{
+    singlePage(){
+      this.$router.push({ path: '/u/' + this.suId.toString() })
+    },
+    // TODO: FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    preventInvalidInput(event) {
+      let value = event.target.value;
+      // Check if value is number
+      let isValid = +value == +value;
+
+      if (!isValid) {
+        // input event is not cancellable by preventDefault()
+        // so we have to use the below approach to reset the current value to previous one
+        var resetEvent = document.createEvent('Event');
+        resetEvent.initEvent('input', true, true);
+        event.target.value = event.target._value;
+        event.target.dispatchEvent(resetEvent);
+      }
+    }
+  }
 }
 </script>
 
@@ -32,6 +52,10 @@ h3, p{
 }
 .su{
   margin: 10px 0;
+}
+.su-id{
+  font-size: 0.6em;
+  color: lightgray;
 }
 .item{
   margin: 5px 0;
