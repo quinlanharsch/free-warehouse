@@ -1,6 +1,9 @@
 <template>
   <div id="storageUnitSinglePage">
+    <h3>Storage Units</h3>
     <storage-unit-page-selector></storage-unit-page-selector>
+    <br/>
+    
     <storage-unit
     :su="this.suById($route.params.suid)"
     :su-id="$route.params.suid">

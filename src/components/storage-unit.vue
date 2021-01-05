@@ -1,6 +1,6 @@
 <template>
   <div class='StorageUnit'>
-    <h3 @click="singlePage()">{{su.name}} <span class="su-id">/{{suId}}</span></h3>
+    <h4 @click="singlePage()">{{su.name}} <span class="su-id">/{{suId}}</span></h4>
     <div class='hzAlignWrapper'>
       <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="item">
         <item :itemId='itemId' :qty='qty' :suId='suId'></item>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 h3, p{
   margin: 0;
   padding: 0.4em 0;

@@ -36,6 +36,8 @@ export default new Vuex.Store({
       },
 		},
 	},
+  // TODO: Make it so changing CAP also changes aviliable Items
+  // enforce with the other TODO code (v-model verification)
 	getters:{
     suList: (state) => {
       return state.suList

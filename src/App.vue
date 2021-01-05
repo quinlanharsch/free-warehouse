@@ -34,7 +34,7 @@ export default {
   box-sizing: border-box;
 }
 .content-wrapper{
-  padding-top: 40px;
+  padding-top: 10px;
   max-width: 480px;
   margin: auto;
 }
