@@ -12,24 +12,25 @@
         @click="this.toggleStorageMode">
         {{this.storageMode?"⇅":"±"}}
       </button>
-      <button class='btn'
+      <a class='btn'
         :href= "'data:text/csv;charset=utf-8,' + this.csvData"
         target = "_blank"
         download = "store_data.csv">
         csv
-      </button>
+      </a>
     </form>
   </div>
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapGetters} from 'vuex'
 export default {
   name: 'Navbar',
   components: {
   },
   computed: {
-    ...mapState(['storageMode'])
+    ...mapState(['storageMode']),
+    ...mapGetters(['csvData'])
   },
   methods: {
     ...mapMutations(['toggleStorageMode'])

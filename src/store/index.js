@@ -16,18 +16,24 @@ export default new Vuex.Store({
       '8': {name:"Sample Supply 8", total: 2, capacity:10}
     },
 		suList:{
-      '0': {name:"Available Items", itemList: {
-        '1': 10,
-        '2': 1,
-        '3': 0,
-        '8': 1
-      }},
-			'1': {name:"Sample Ambulance", itemList: {
-        '1': 20,
-        '2': 0,
-        '3': 1,
-        '8': 1
-      }},
+      '0': {
+        name:"Available Items",
+        itemList: {
+          '1': 10,
+          '2': 1,
+          '3': 0,
+          '8': 1
+        }
+      },
+			'1': {
+        name:"Sample Ambulance",
+        itemList: {
+          '1': 20,
+          '2': 0,
+          '3': 1,
+          '8': 1
+        }
+      },
 		},
 	},
 	getters:{
