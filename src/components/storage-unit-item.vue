@@ -8,17 +8,17 @@
         <!-- todo make this a component -->
         <div v-if="!this.storageMode">
           <div class="btn" @click="onAquire()">＋</div>
-          <input type="text" v-model="quantity">
+          <input class="w-3" type="text" v-model="quantity">
           <div class="btn" v-if="!this.storageMode" @click="onConsume()">－</div>
         </div>
         <div v-else-if="this.storageMode && (this.suId != '0')">
           <div class="btn" @click="onRetrieve()">⇊</div>
-          <input type="text" v-model="quantity">
+          <input class="w-3" type="text" v-model="quantity">
           <div class="btn" @click="onStore()">⇈</div>
         </div>
         <div v-else>
           <div class="btn">⋅</div>
-          <input type="text" v-model="quantity">
+          <input class="w-3" type="text" v-model="quantity">
           <div class="btn">⋅</div>
         </div>
       </div>
@@ -75,10 +75,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.hzAlignWrapper{
-  margin: 0 0 17px 0
-}
-</style>

@@ -3,7 +3,7 @@
     <h3>Storage Units</h3>
     <storage-unit-page-selector></storage-unit-page-selector>
     <br/>
-    
+
     <div v-for="(su, suId) in this.suList" :key="suId">
       <storage-unit :su="su" :su-id="suId"></storage-unit>
     </div>
@@ -28,7 +28,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

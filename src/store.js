@@ -10,28 +10,28 @@ export default new Vuex.Store({
   state:{  // default state
     storageMode: true,
     itemTypes: {
-      '1': {name:"Sample Supply 1", total: 30, capacity:50},
-      '2': {name:"Sample Supply 2", total: 1, capacity:10},
-      '3': {name:"Sample Supply 3", total: 1, capacity:10},
-      '8': {name:"Sample Supply 8", total: 2, capacity:10}
+      1: {name:"SupplyName1", total: 10, capacity:100},
+      2: {name:"SupplyName2", total: 10, capacity:100},
+      3: {name:"SupplyName3", total: 10, capacity:100},
+      4: {name:"SupplyName4", total: 10, capacity:100}
     },
 		suList:{
       0: {
         name:"Available Items",
         itemList: {
-          '1': 10,
-          '2': 1,
+          '1': 0,
+          '2': 0,
           '3': 0,
-          '8': 1
+          '4': 0
         }
       },
 			1: {
-        name:"Sample Ambulance",
+        name:"SuName1",
         itemList: {
-          '1': 20,
-          '2': 0,
-          '3': 1,
-          '8': 1
+          '1': 10,
+          '2': 10,
+          '3': 10,
+          '4': 10
         }
       },
 		},
@@ -55,8 +55,8 @@ export default new Vuex.Store({
       return state.itemTypes[itemId].name
     },
     csvData: (state) => {
-      const suListKeys = Object.keys(state.suList)
-      const itemListKeys = Object.keys(state.itemTypes)
+      var suListKeys = Object.keys(state.suList)
+      var itemListKeys = Object.keys(state.itemTypes)
       var csv = new Array(suListKeys.length + 1)
       csv[0] = 'Name'
       itemListKeys.forEach(function(itemId){

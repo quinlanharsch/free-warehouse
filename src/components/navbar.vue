@@ -35,15 +35,10 @@ export default {
   },
   computed: {
     ...mapState(['storageMode']),
-    ...mapGetters(['csvData'])
   },
   methods: {
-    ...mapMutations(['toggleStorageMode'])
+    ...mapMutations(['toggleStorageMode']),
+    ...mapGetters(['csvData'])
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

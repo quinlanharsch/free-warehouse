@@ -2,7 +2,7 @@
   <div class='StorageUnit'>
     <h4 @click="singlePage()">{{su.name}} <span class="su-id">/{{suId}}</span></h4>
     <div class='hzAlignWrapper'>
-      <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="item">
+      <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="su-item-wrapper">
         <storage-unit-item :itemId='itemId' :qty='qty' :suId='suId'></storage-unit-item>
       </div>
     </div>
@@ -39,25 +39,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-h3, p{
-  margin: 0;
-  padding: 0.4em 0;
-  text-align: left;
-}
-.hzAlignWrapper{
-  padding: 10px 0;
-}
-.su{
-  margin: 10px 0;
-}
-.su-id{
-  font-size: 0.6em;
-  color: lightgray;
-}
-.item{
-  margin: 5px 0;
-}
-</style>

@@ -40,18 +40,16 @@ export default {
 }
 h1, h2, h3, h4, h5, h6{
   margin: 0;
+  padding: 0.4em 0;
+  text-align: left;
 }
 h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, div:hover{
   cursor: default;
 }
-.itemTypes{
-  padding: 0.2em 0;
-  margin: 2px 0;
-}
 .btn{
   margin: 2px;
   min-width: 30px;
-  padding: 3px;
+  padding: 3px 5px;
   border: 1px solid #ff9c66;
   background-color: #ff9c66;
   color: white;
@@ -65,8 +63,7 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, div:hover{
   cursor: pointer;
 }
 .hzAlignWrapper{
-  padding: 0.8em 0;
-  margin: 2px 0;
+  padding: 1em 0;
   position: relative;
 }
 .hzAlignInner{
@@ -82,14 +79,28 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, div:hover{
   top: 0.2em;
   display: inline-block;
 }
-
 input[type=text]{
   padding: 3px;
-  margin: 0 2px;
-  width: 3em;
   border: 0;
+  border-bottom: 2px solid #ff9c66;
   text-align: center;
   font-family:inherit;
   font-size: inherit;
+}
+input[type=text].w-3{
+  width: 3em;
+}
+input[type=text].w-20{
+  width: 20em;
+}
+.su{
+  margin: 10px 0;
+}
+.su-id{
+  font-size: 0.6em;
+  color: lightgray;
+}
+.su-selector{
+  display: inline-block;
 }
 </style>
