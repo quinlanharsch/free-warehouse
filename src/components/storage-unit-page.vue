@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import store from '../store/index.js'
+import store from '../store.js'
 import StorageUnit from './storage-unit.vue'
 import StorageUnitPageSelector from './storage-unit-page-selector'
 import {mapGetters} from 'vuex'

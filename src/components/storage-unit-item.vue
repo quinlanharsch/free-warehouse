@@ -1,5 +1,5 @@
 <template>
-  <div class='item'>
+  <div class='StorageUnitItem'>
     <div class="hzAlignWrapper">
       <div class='left hzAlignInner'>
         {{this.itemNameById(itemId)}}
@@ -30,7 +30,7 @@
 import {mapGetters, mapState} from 'vuex'
 
 export default {
-  name: 'Item',
+  name: 'StorageUnitItem',
   props: ['itemId', 'qty', 'suId'],
   data: function () {
     return {

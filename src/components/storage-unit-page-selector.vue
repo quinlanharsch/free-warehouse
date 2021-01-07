@@ -4,11 +4,12 @@
     <div class="su-selector" v-for="(su, suId) in this.suList" :key="suId">
       <a class="btn" :href="'/?#/u/' + suId.toString()">/{{suId}}</a>
     </div>
+    <a class="btn" href="/?#/u+">+</a>
   </div>
 </template>
 
 <script>
-import store from '../store/index.js'
+import store from '../store.js'
 import {mapGetters} from 'vuex'
 
 export default {

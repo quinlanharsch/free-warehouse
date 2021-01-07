@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import store from './store/index.js'
+import store from './store.js'
 import Navbar from './components/navbar.vue'
 import {mapGetters} from 'vuex'
 

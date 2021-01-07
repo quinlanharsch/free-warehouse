@@ -3,18 +3,18 @@
     <h4 @click="singlePage()">{{su.name}} <span class="su-id">/{{suId}}</span></h4>
     <div class='hzAlignWrapper'>
       <div v-for="(qty, itemId) in su.itemList" :key="itemId" class="item">
-        <item :itemId='itemId' :qty='qty' :suId='suId'></item>
+        <storage-unit-item :itemId='itemId' :qty='qty' :suId='suId'></storage-unit-item>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Item from './item.vue'
+import StorageUnitItem from './storage-unit-item.vue'
 export default {
   name: 'StorageUnit',
   components: {
-    Item
+    StorageUnitItem
   },
   props: ['su', 'suId'],
   methods:{

@@ -11,7 +11,7 @@
       displays item totals. Edit capacities here.
       <br/><br/>
       <a class="btn" href="/?#/u">/u</a>
-      The <b><a href="/?#/i">Storage Unit List</a></b>
+      The <b><a href="/?#/u">Storage Unit List</a></b>
       displays storerooms, vehicles, etc.
     </p>
   </div>

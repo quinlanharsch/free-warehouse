@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import store from '../store/index.js'
+import store from '../store.js'
 import {mapGetters} from 'vuex'
 
 export default {
