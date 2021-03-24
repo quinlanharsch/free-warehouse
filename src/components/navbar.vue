@@ -1,15 +1,15 @@
 <template>
   <div class='navbar navbar-light bg-light'>
-    <a class="navbar-brand h1" href="/?#/">
-      <img src="/img/icons/icon.svg"
+    <a class="navbar-brand h1" href="?#/">
+      <img src="img/icons/icon.svg"
       style="display: inline-block; height: 1.2em;"
       alt="*^^">
       Freehouse
     </a>
 
     <form class="form-inline">
-      <a class="btn" href="/?#/i">/i</a>
-      <a class="btn" href="/?#/u">/u</a>
+      <a class="btn" href="?#/i">/i</a>
+      <a class="btn" href="?#/u">/u</a>
     </form>
 
     <form class="form-inline">
