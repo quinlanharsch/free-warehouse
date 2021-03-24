@@ -9,6 +9,7 @@ import HomePage from '@/components/home-page.vue'
 Vue.use(Router)
 
 export default new Router({
+  base: '/free-warehouse/',
   routes: [
     { path: '/', component: HomePage },
     { path: '/i', component: ItemListPage },
