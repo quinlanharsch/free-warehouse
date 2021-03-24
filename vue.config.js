@@ -1,6 +1,7 @@
 // Inside vue.config.js
 module.exports = {
   // ...other vue-cli plugin options...
+  publicPath: '/free-warehouse/',
   pwa: {
     name: 'Free House',
     themeColor: '#4DBA87',
@@ -12,7 +13,7 @@ module.exports = {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
       // swSrc is required in InjectManifest mode.
-      swSrc: 'dev/sw.js',
+      swSrc: 'src/service-worker.js',
       // ...other Workbox options...
     }
   }
