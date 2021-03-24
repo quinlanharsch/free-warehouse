@@ -1,5 +1,8 @@
 # free-warehouse
 
+## Update/Publish gh-pages
+https://dev.to/rolanddoda/deploy-to-github-pages-like-a-pro-with-github-actions-4hdg
+
 ## Project setup
 ```
 npm install
