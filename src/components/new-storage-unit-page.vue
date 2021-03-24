@@ -66,7 +66,7 @@ export default {
         'itemId': itemId,
         'qty': this.newSu.itemList[itemId]
       })
-      this.$router.push({ path: '/u/' + this.nextSuId.toString() })
+      this.$router.push({ path: 'u/' + this.nextSuId.toString() })
     }
   },
   created(){

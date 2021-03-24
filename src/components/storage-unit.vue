@@ -19,7 +19,7 @@ export default {
   props: ['su', 'suId'],
   methods:{
     singlePage(){
-      this.$router.push({ path: '/u/' + this.suId.toString() })
+      this.$router.push({ path: 'u/' + this.suId.toString() })
     },
     // TODO: FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     preventInvalidInput(event) {
